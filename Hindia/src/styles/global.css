@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hindia-bg: #090b0f;
+  --color-hindia-surface: #13161e;
+  --color-hindia-dim: #1e2330;
+  --color-hindia-primary: #e63946;
+  --color-hindia-secondary: #e8956d;
+  --color-hindia-glow-red: rgba(230, 57, 70, 0.18);
+  --color-hindia-glow-warm: rgba(232, 149, 109, 0.1);
+  --color-hindia-text: #dce5f0;
+  --color-hindia-muted: #7b8aa0;
+  --color-hindia-subtle: #3d4a5c;
+
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-hindia-bg text-hindia-text antialiased;
+    @apply selection:bg-hindia-primary selection:text-white;
+
+    background-image:
+      radial-gradient(
+        ellipse 80% 40% at 50% -10%,
+        var(--color-hindia-glow-red),
+        transparent
+      ),
+      radial-gradient(circle at 50% 0%, #1a1d24 0%, var(--color-hindia-bg) 65%);
+
+    min-height: 100vh;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-hindia-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-hindia-subtle);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-hindia-muted);
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply backdrop-blur-md rounded-2xl;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* Card */
+  .glass-card {
+    @apply backdrop-blur-lg rounded-xl transition-all duration-300;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .hero-glow {
+    box-shadow:
+      0 0 80px var(--color-hindia-glow-red),
+      0 4px 30px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .divider {
+    border-top: 1px solid var(--color-hindia-subtle);
+    opacity: 0.4;
+  }
+
+  .label-sm {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-hindia-muted);
+  }
+}

@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import logoHindia from '../assets/hindia.png';
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 w-full z-50 p-4 md:p-6 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto glass-panel px-6 py-3 flex items-center justify-between rounded-full">
+    
+    <a href="/" class="text-xl md:text-2xl font-sans font-bold flex items-center gap-3 group">
+      <Image 
+        src={logoHindia} 
+        alt="Logo Hindia" 
+        class="w-9 h-9 rounded-full object-cover border-2 border-transparent group-hover:border-hindia-primary transition-colors duration-300" 
+      />
+      <div class="flex gap-1">
+        <span class="text-hindia-text">Synesthesia</span>
+      </div>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8 text-sm font-sans font-medium">
+      <li>
+        <a 
+          href="/" 
+          class={`transition-colors duration-300 ${pathname === '/' ? 'text-hindia-primary' : 'text-hindia-muted hover:text-hindia-text'}`}
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/biografi" 
+          class={`transition-colors duration-300 ${pathname.startsWith('/biografi') ? 'text-hindia-primary' : 'text-hindia-muted hover:text-hindia-text'}`}
+        >
+          Biografi
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/diskografi" 
+          class={`transition-colors duration-300 ${pathname.startsWith('/diskografi') ? 'text-hindia-primary' : 'text-hindia-muted hover:text-hindia-text'}`}
+        >
+          Diskografi
+        </a>
+      </li>
+    </ul>
+
+    <div class="flex items-center gap-6 text-sm font-sans font-medium">
+      <a 
+        href="#listen" 
+        class="bg-hindia-secondary hover:bg-hindia-text text-hindia-bg px-6 py-2 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(244,162,97,0.3)] hover:shadow-[0_0_20px_rgba(226,232,240,0.5)] transform hover:-translate-y-0.5"
+      >
+        Mulai Dengar
+      </a>
+    </div>
+
+  </nav>
+</header>
