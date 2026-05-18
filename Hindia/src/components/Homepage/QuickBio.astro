@@ -1,0 +1,163 @@
+---
+import { Image } from 'astro:assets';
+import imgBird from '../../assets/bird.jpg';
+---
+
+<section id="quick-bio" class="relative py-24 md:py-32 overflow-hidden bg-hindia-bg">
+
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] opacity-20"
+    style="background: radial-gradient(ellipse, var(--color-hindia-primary), transparent 70%);"
+  ></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+
+    <p class="bio-label label-sm mb-4 text-center md:text-left">Siapa Hindia?</p>
+
+    <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+      <div class="bio-text flex flex-col gap-6">
+        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-hindia-text">
+          Baskara Putra,<br />
+          <span class="text-hindia-primary">lebih dari sekadar</span><br />
+          sebuah nama panggung.
+        </h2>
+
+        <p class="text-hindia-muted leading-relaxed text-base md:text-lg">
+          Lahir 22 Februari 1994 di Bintaro, Daniel Baskara Putra menemukan nama
+          <em class="text-hindia-text not-italic font-medium">Hindia</em> dari sebuah lukisan Raden Saleh
+          di Jogja jauh sebelum musiknya ada. Dari gamer yang belajar desain mandiri,
+          hingga vokalis <span class="text-hindia-text font-medium">.Feast</span> dan
+          co-founder <span class="text-hindia-text font-medium">Lomba Sihir</span>,
+          perjalanannya tidak pernah linear.
+        </p>
+
+        <p class="text-hindia-muted leading-relaxed text-base md:text-lg">
+          Sejak 2018, nama Hindia menjadi rumah bagi lagu-lagu yang berbicara tentang
+          kecemasan, kehilangan, dan harapan yang membandel. Album
+          <em class="text-hindia-text not-italic font-medium">Lagipula Hidup Akan Berakhir</em> (2023)
+          membuktikan bahwa kedalaman bisa dikemas dalam pop yang membumi
+          sebuah pencapaian yang mengantarkannya masuk
+          <span class="text-hindia-text font-medium">Fortune Indonesia 40 Under 40</span> (2025).
+        </p>
+
+        <div class="bio-stats grid grid-cols-3 gap-4 pt-2">
+          {[
+            { value: '2012', label: 'Mulai .Feast' },
+            { value: '2018', label: 'Solo sebagai Hindia' },
+            { value: '2025', label: 'Fortune 40 Under 40' },
+          ].map(({ value, label }) => (
+            <div class="glass-card p-4 text-center">
+              <p class="text-2xl font-extrabold text-hindia-primary leading-none mb-1">{value}</p>
+              <p class="label-sm">{label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="pt-2">
+          <a
+            href="/biografi"
+            class="bio-cta group inline-flex items-center gap-3 font-semibold text-hindia-bg bg-hindia-primary hover:bg-hindia-secondary px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-hindia-primary/30 hover:-translate-y-0.5 active:scale-95"
+          >
+            Baca Sejarahnya
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="bio-image relative">
+        <div
+          aria-hidden="true"
+          class="absolute inset-0 scale-90 blur-3xl opacity-30 rounded-3xl"
+          style="background: linear-gradient(135deg, var(--color-hindia-primary), var(--color-hindia-secondary));"
+        ></div>
+
+        <div class="glass-panel relative overflow-hidden rounded-2xl aspect-[4/5]">
+          <Image
+            src={imgBird}
+            alt="Foto Hindia — Baskara Putra"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            widths={[400, 700]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+
+          <div class="absolute inset-0 bg-gradient-to-t from-hindia-bg/80 via-transparent to-transparent"></div>
+
+          <p class="absolute bottom-4 left-4 right-4 label-sm text-hindia-muted">
+            Daniel Baskara Putra · Penyanyi, Penulis Lagu, Produser
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+  const mm = gsap.matchMedia();
+
+  mm.add("(prefers-reduced-motion: no-preference)", () => {
+    const section = document.querySelector<HTMLElement>("#quick-bio");
+    if (!section) return;
+
+    gsap.from(section.querySelector(".bio-label"), {
+      scrollTrigger: { trigger: "#quick-bio", start: "top 85%" },
+      y: 16,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    });
+
+    gsap.from(section.querySelectorAll(".bio-text > *"), {
+      scrollTrigger: { trigger: ".bio-text", start: "top 80%" },
+      y: 32,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.12,
+      ease: "power3.out",
+    });
+
+    gsap.from(section.querySelectorAll(".bio-stats > *"), {
+      scrollTrigger: { trigger: ".bio-stats", start: "top 85%" },
+      scale: 0.9,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "back.out(1.4)",
+    });
+
+    gsap.from(".bio-image", {
+      scrollTrigger: { trigger: ".bio-image", start: "top 80%" },
+      x: 48,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    gsap.to(".bio-image", {
+      scrollTrigger: {
+        trigger: "#quick-bio",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.5,
+      },
+      y: -40,
+      ease: "none",
+    });
+  });
+</script>

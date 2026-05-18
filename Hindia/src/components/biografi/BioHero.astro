@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import imgBird from '../../assets/bird.jpg';
+
+const { data } = Astro.props;
+---
+
+<section class="relative min-h-[70vh] flex items-end pb-20 overflow-hidden bg-hindia-bg">
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={imgBird}
+      alt="Hindia — Baskara Putra"
+      class="w-full h-full object-cover object-top opacity-80"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <div class="absolute inset-0 z-10 bg-gradient-to-t from-hindia-bg via-hindia-bg/80 to-transparent"></div>
+  <div class="absolute inset-0 z-10" style="background: radial-gradient(circle at center, transparent 0%, var(--color-hindia-bg) 70%, var(--color-hindia-bg) 100%); opacity: 0.8;"></div>
+
+  <div class="relative z-20 max-w-7xl mx-auto px-6 w-full pt-32">
+    <p class="bio-hero-label label-sm mb-3 text-hindia-primary">{data.label}</p>
+    <h1 class="bio-hero-title text-5xl md:text-7xl font-sans font-extrabold tracking-tight leading-tight text-hindia-text">
+      {data.title}<br />
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-hindia-primary to-hindia-secondary">{data.titleAccent}</span>
+    </h1>
+    <p class="bio-hero-sub mt-6 text-hindia-muted max-w-2xl text-base md:text-lg leading-relaxed font-sans">
+      {data.subtitle}
+    </p>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
+    gsap.from([".bio-hero-label", ".bio-hero-title", ".bio-hero-sub"], {
+      y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out", delay: 0.2,
+    });
+  });
+</script>

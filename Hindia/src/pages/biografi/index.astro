@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BioHero from '../../components/biografi/BioHero.astro';
+import BioTimeline from '../../components/biografi/BioTimeline.astro';
+import BioQuotes from '../../components/biografi/BioQuotes.astro';
+import BioCTA from '../../components/biografi/BioCTA.astro';
+
+const HEADLINE = {
+  label: 'Biografi',
+  title: 'Perjalanan Seorang',
+  titleAccent: 'Hindia',
+  subtitle: 'Dari gamer di Bintaro, calon arsitektur, penggemar Raden Saleh sampai menjadi salah satu musisi indie paling berpengaruh di Indonesia.',
+};
+
+const TIMELINE = [
+  {
+    year: '1994',
+    title: 'Lahir di Bintaro',
+    body: 'Daniel Baskara Putra lahir 22 Februari 1994. Masa kecilnya dihabiskan di Bintaro bermain game online, belajar Photoshop otodidak untuk mendesain logo klan, dan bercita-cita menjadi arsitek.',
+  },
+  {
+    year: '2000-an',
+    title: 'Dari Arsitek ke Visual Desainer',
+    body: 'Sejak SD hingga SMP, jawaban Baskara atas pertanyaan "mau jadi apa?" selalu: Arsitektur. Sampai masuk kelas 9, ia baru menemukan profesi "Visual Desainer" — dan haluan berubah seketika.',
+  },
+  {
+    year: 'SMA',
+    title: 'Menemukan Nama "Hindia"',
+    body: 'Saat study tour ke Jogja, Baskara melihat lukisan Raden Saleh bertema Hindia Belanda di sebuah museum. Nama itu langsung melekat — jauh sebelum ia punya satu lagu pun sebagai proyek solonya.',
+  },
+  {
+    year: '2012',
+    title: 'Mendirikan .Feast di Universitas Indonesia',
+    body: 'Masuk jurusan Komunikasi UI dengan beasiswa yang ditolak dari Singapura, Baskara bertemu Adnan Satyanugraha Putra. Dari duo dua orang bermain lagu "Camkan", mereka merekrut Dicky, Awan, dan lainnya — .Feast resmi lahir.',
+    accent: true,
+  },
+  {
+    year: '2018',
+    title: 'Debut Solo sebagai Hindia',
+    body: 'Ketika .Feast sudah berjalan stabil, Baskara akhirnya memberi ruang pada proyek yang telah lama menunggu. "No One Will Find Me" — bagian dari album kompilasi Bertamu — menjadi tanda hadirnya Hindia ke dunia.',
+    accent: true,
+  },
+  {
+    year: '2019',
+    title: 'Evaluasi, Secukupnya, dan Seterusnya',
+    body: 'Satu per satu singel dirilis: "Evaluasi" (Maret), "Secukupnya" (Mei), "Tinggalkan di Sana" dan "Jam Makan Siang" feat. Matter Mos (Juni). Hindia membuktikan konsistensinya di tahun pertama.',
+  },
+  {
+    year: '2019',
+    title: 'Co-founder Lomba Sihir',
+    body: 'Bersama musisi lain, Baskara membentuk Lomba Sihir — band kolektif yang menjadi ruang eksperimen lintas genre di luar .Feast maupun Hindia.',
+  },
+  {
+    year: '2023',
+    title: 'Lagipula Hidup Akan Berakhir',
+    body: 'Album ganda yang dirilis Juli 2023 menjadi pernyataan paling berani Hindia: soal kecemasan, tubuh, janji palsu, dan kekhawatiran kolektif. Empat singel — "Janji Palsu", "Masalah Masa Depan", "Perkara Tubuh", "Kami Khawatir Kawan" — mendahului rilisnya.',
+    accent: true,
+  },
+  {
+    year: '2025',
+    title: 'Fortune Indonesia 40 Under 40',
+    body: 'Pada Fortune Indonesia Summit 2025 di The Westin Jakarta (6 Februari), Baskara dinobatkan sebagai salah satu dari 40 orang muda paling berpengaruh di Indonesia. Sebuah pengakuan atas karya, konsistensi, dan dampak kulturalnya.',
+    accent: true,
+  },
+];
+
+const QUOTES = [
+  {
+    text: '"Gate gue tuh sebenernya semuanya dari game online."',
+    context: 'Wawancara VOLIX / Viniar, 2025',
+  },
+  {
+    text: '"Waktu itu gue nemu lukisannya Raden Saleh tentang Hindia Belanda. Waktu itu namanya udah ada, cuma musiknya belum ada di pikiran."',
+    context: 'Tentang asal nama Hindia',
+  },
+  {
+    text: '"Waktu itu .Feast cuma dua orang. Gue sama Adnan doang, kita nyari session player aja."',
+    context: 'Tentang awal mula .Feast',
+  },
+];
+---
+
+<Layout title="Biografi | Hindia" description="Biografi lengkap Hindia (Baskara Putra) — perjalanan dari Bintaro hingga menjadi musisi indie paling berpengaruh di Indonesia.">
+  <BioHero data={HEADLINE} />
+  <BioTimeline items={TIMELINE} />
+  <BioQuotes quotes={QUOTES} />
+  <BioCTA />
+</Layout>

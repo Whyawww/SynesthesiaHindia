@@ -1,0 +1,65 @@
+---
+interface QuoteItem {
+  text: string;
+  context: string;
+}
+
+interface Props {
+  quotes: QuoteItem[];
+}
+
+const { quotes } = Astro.props;
+---
+
+<section id="quotes" class="py-24 bg-hindia-surface">
+  <div class="max-w-6xl mx-auto px-6">
+    <p class="label-sm text-center mb-12 text-hindia-muted">Dalam Kata-katanya Sendiri</p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {quotes.map((q) => (
+        <figure class="glass-card p-8 flex flex-col gap-6 quote-card relative overflow-hidden group">
+          <div class="absolute -top-4 -right-4 w-20 h-20 bg-hindia-primary/10 rounded-full blur-2xl group-hover:bg-hindia-primary/20 transition-all"></div>
+          
+          <span aria-hidden="true" class="text-6xl font-serif leading-none text-hindia-subtle absolute top-6 left-6 opacity-40">"</span>
+          
+          <blockquote class="text-hindia-text text-base leading-relaxed italic flex-1 relative z-10 pt-6">
+            {q.text}
+          </blockquote>
+          
+          <figcaption class="label-sm relative z-10 before:content-['—_'] before:text-hindia-primary">
+            {q.context}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+    gsap.registerPlugin(ScrollTrigger);
+  
+    gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
+      // Best Practice: Gunakan fromTo daripada from untuk mencegah stuck opacity
+      gsap.fromTo(".quote-card", 
+        { 
+          y: 40, 
+          opacity: 0 
+        },
+        {
+          scrollTrigger: { 
+            trigger: "#quotes", 
+            start: "top 80%" 
+          },
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          stagger: 0.2, 
+          ease: "power2.out",
+          clearProps: "transform,opacity" 
+        }
+      );
+    });
+  </script>
