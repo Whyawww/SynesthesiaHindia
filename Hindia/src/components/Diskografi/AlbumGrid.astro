@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+
+import imgNari from '../../assets/nari.jpg';
+import imgHidup from '../../assets/hidup.jpg';
+import imgDoves from '../../assets/Doves.jpg';
+
+const ALBUMS = [
+  {
+    year: '2019',
+    title: 'Menari Dengan Bayangan',
+    spotify: 'https://open.spotify.com/album/1DAuVHMlBvIjzWZALSUXbn',
+    ytMusic: 'https://music.youtube.com/playlist?list=OLAK5uy_lvfCxPUsCzss1fTa0Tm3GRkMsg7x1VCtM&si=HkcmntrQp5ODxoLv',
+    yt: 'https://www.youtube.com/watch?v=nneH6vs3ah8&list=PLPwkHp6oYXKgW1cK3ohsqankm4crTdPsK',
+    img: imgNari,
+  },
+  {
+    year: '2023',
+    title: 'Lagipula Hidup Akan Berakhir',
+    spotify: 'https://open.spotify.com/album/0DMdiWcqnutCi81EqBXkF8',
+    ytMusic: 'https://music.youtube.com/playlist?list=OLAK5uy_mmZ7dBAtj4jy0x7PQDeGL2n38AWD5Uhu4&si=_zTeBC4yk_cgS59P',
+    yt: 'https://www.youtube.com/watch?v=IAcMR8PkBIk&list=PLPwkHp6oYXKh9WFTHza6fU24CW4fziUA4',
+    img: imgHidup,
+  },
+  {
+    year: '2025',
+    title: "Doves, '25 on Blank Canvas",
+    spotify: 'https://open.spotify.com/album/6HiRRMXgflIyrpjCiPW8rU',
+    ytMusic: 'https://music.youtube.com/playlist?list=OLAK5uy_nSn_61CBt02jCVu4HEKQ0QZAR6U963SCs&si=Dvi7gHsG9HZZFPXY',
+    yt: 'https://www.youtube.com/watch?v=fpI1-HiLOuQ&list=PLPwkHp6oYXKhQwMe2nZNw7xkko9KKoo2m',
+    img: imgDoves,
+  }
+];
+---
+
+<section class="pb-32 px-6 max-w-7xl mx-auto relative z-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+    {ALBUMS.map((album) => (
+      <button 
+        class="album-btn group text-left w-full focus:outline-none"
+        data-title={album.title}
+        data-year={album.year}
+        data-spotify={album.spotify}
+        data-ytmusic={album.ytMusic}
+        data-yt={album.yt}
+      >
+        <div class="glass-card p-4 flex flex-col gap-5 h-full relative overflow-hidden">
+          
+          <div class="relative w-full aspect-square rounded-lg overflow-hidden bg-hindia-dim">
+            <Image 
+              src={album.img} 
+              alt={album.title} 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            
+            <div class="absolute inset-0 bg-hindia-bg/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+              <div class="w-14 h-14 rounded-full bg-hindia-secondary/90 flex items-center justify-center text-white shadow-[0_0_20px_rgba(16,170,231,0.5)] transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 px-2 pb-2">
+            <p class="label-sm text-hindia-secondary">{album.year}</p>
+            <h3 class="text-xl font-bold text-hindia-text group-hover:text-white transition-colors line-clamp-2">
+              {album.title}
+            </h3>
+          </div>
+          
+        </div>
+      </button>
+    ))}
+
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+
+  gsap.fromTo(".album-btn",
+    { y: 50, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power3.out", clearProps: "all" }
+  );
+
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.album-btn');
+  
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const payload = {
+        title: btn.dataset.title || '',
+        album: btn.dataset.year || '',
+        spotify: btn.dataset.spotify || '#',
+        ytMusic: btn.dataset.ytmusic || '#',
+        yt: btn.dataset.yt || '#'
+      };
+
+      window.dispatchEvent(new CustomEvent('hindia:open-modal', { detail: payload }));
+    });
+  });
+</script>

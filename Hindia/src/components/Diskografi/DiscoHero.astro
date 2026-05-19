@@ -1,0 +1,20 @@
+<section class="pt-32 pb-12 px-6 max-w-7xl mx-auto text-center relative z-10">
+  <div class="animate-hero">
+    <p class="label-sm text-hindia-secondary mb-4 tracking-widest">Katalog Musik</p>
+    <h1 class="text-4xl md:text-6xl font-sans font-extrabold text-hindia-text mb-6">
+      Diskografi <span class="text-transparent bg-clip-text bg-gradient-to-r from-hindia-secondary to-blue-400">Hindia</span>
+    </h1>
+    <p class="text-hindia-muted max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+      Kumpulan karya, eksplorasi melodi, dan narasi personal dari Baskara Putra. Klik pada album untuk mendengarkan.
+    </p>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  
+  gsap.fromTo(".animate-hero > *", 
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out", clearProps: "all" }
+  );
+</script>

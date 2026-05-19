@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DiscoHero from '../../components/Diskografi/DiscoHero.astro';
+import AlbumGrid from '../../components/Diskografi/AlbumGrid.astro';
+import TrackModal from '../../components/modal/TrackModal.astro';
+---
+
+<Layout title="Diskografi | Hindia" description="Eksplorasi diskografi lengkap Hindia, dari Menari Dengan Bayangan hingga karya terbaru.">
+  
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-hindia-primary/20 blur-[120px] rounded-full opacity-50 mix-blend-screen"></div>
+  </div>
+
+  <div class="relative z-10 flex flex-col min-h-screen">
+    <DiscoHero />
+    <AlbumGrid />
+  </div>
+
+  <TrackModal />
+  
+</Layout>
