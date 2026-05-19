@@ -23,7 +23,7 @@ const pathname = Astro.url.pathname;
       <li>
         <a 
           href="/" 
-          class={`transition-colors duration-300 ${pathname === '/' ? 'text-hindia-primary' : 'text-hindia-muted hover:text-hindia-text'}`}
+          class={`transition-colors duration-300 ${pathname === '/' ? 'text-hindia-secondary' : 'text-hindia-muted hover:text-hindia-text'}`}
         >
           Home
         </a>
@@ -31,7 +31,7 @@ const pathname = Astro.url.pathname;
       <li>
         <a 
           href="/biografi" 
-          class={`transition-colors duration-300 ${pathname.startsWith('/biografi') ? 'text-hindia-primary' : 'text-hindia-muted hover:text-hindia-text'}`}
+          class={`transition-colors duration-300 ${pathname.startsWith('/biografi') ? 'text-hindia-secondary' : 'text-hindia-muted hover:text-hindia-text'}`}
         >
           Biografi
         </a>
@@ -39,7 +39,7 @@ const pathname = Astro.url.pathname;
       <li>
         <a 
           href="/diskografi" 
-          class={`transition-colors duration-300 ${pathname.startsWith('/diskografi') ? 'text-hindia-primary' : 'text-hindia-muted hover:text-hindia-text'}`}
+          class={`transition-colors duration-300 ${pathname.startsWith('/diskografi') ? 'text-hindia-secondary' : 'text-hindia-muted hover:text-hindia-text'}`}
         >
           Diskografi
         </a>

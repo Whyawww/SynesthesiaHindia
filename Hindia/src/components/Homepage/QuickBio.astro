@@ -17,10 +17,10 @@ import imgBird from '../../assets/bird.jpg';
 
     <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
 
-      <div class="bio-text flex flex-col gap-6">
+      <div class="bio-text flex flex-col gap-6 animate-fade-up">
         <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-hindia-text">
           Baskara Putra,<br />
-          <span class="text-hindia-primary">lebih dari sekadar</span><br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-hindia-primary via-hindia-secondary to-hindia-primary bg-300% animate-gradient-pan">lebih dari sekedar</span><br />
           sebuah nama panggung.
         </h2>
 
@@ -49,7 +49,7 @@ import imgBird from '../../assets/bird.jpg';
             { value: '2025', label: 'Fortune 40 Under 40' },
           ].map(({ value, label }) => (
             <div class="glass-card p-4 text-center">
-              <p class="text-2xl font-extrabold text-hindia-primary leading-none mb-1">{value}</p>
+              <p class="text-2xl font-extrabold text-hindia-secondary leading-none mb-1">{value}</p>
               <p class="label-sm">{label}</p>
             </div>
           ))}
@@ -58,7 +58,7 @@ import imgBird from '../../assets/bird.jpg';
         <div class="pt-2">
           <a
             href="/biografi"
-            class="bio-cta group inline-flex items-center gap-3 font-semibold text-hindia-bg bg-hindia-primary hover:bg-hindia-secondary px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-hindia-primary/30 hover:-translate-y-0.5 active:scale-95"
+            class="bio-cta group inline-flex items-center gap-3 font-semibold text-hindia-bg bg-hindia-secondary hover:bg-hindia-primary px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-hindia-primary/30 hover:-translate-y-0.5 active:scale-95"
           >
             Baca Sejarahnya
             <svg
@@ -82,7 +82,7 @@ import imgBird from '../../assets/bird.jpg';
           style="background: linear-gradient(135deg, var(--color-hindia-primary), var(--color-hindia-secondary));"
         ></div>
 
-        <div class="glass-panel relative overflow-hidden rounded-2xl aspect-[4/5]">
+        <div class="glass-panel relative overflow-hidden rounded-2xl aspect-[4/5] animate-fade-in">
           <Image
             src={imgBird}
             alt="Foto Hindia — Baskara Putra"

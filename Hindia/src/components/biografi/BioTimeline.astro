@@ -28,7 +28,7 @@ const { items } = Astro.props;
           
           <div class={`[direction:ltr] ${i % 2 === 0 ? 'md:text-right' : ''} pt-1`}>
             <span class="label-sm block mb-2 text-hindia-secondary">{item.year}</span>
-            <h3 class={`text-2xl font-bold mb-3 ${item.accent ? 'text-hindia-primary drop-shadow-[0_0_10px_rgba(230,57,70,0.3)]' : 'text-hindia-text'}`}>
+            <h3 class={`text-2xl font-bold mb-3 ${item.accent ? 'text-hindia-secondary drop-shadow-[0_0_10px_rgba(230,57,70,0.3)]' : 'text-hindia-text'}`}>
               {item.title}
             </h3>
             <p class="text-hindia-muted leading-relaxed text-sm md:text-base">{item.body}</p>
@@ -38,7 +38,7 @@ const { items } = Astro.props;
             aria-hidden="true"
             class={`absolute left-[35px] md:left-1/2 top-2 -translate-x-1/2 w-4 h-4 rounded-full border-[3px] z-10 transition-colors duration-300 ${
               item.accent
-                ? 'bg-hindia-bg border-hindia-primary shadow-[0_0_15px_rgba(230,57,70,0.8)]'
+                ? 'bg-hindia-bg border-hindia-secondary shadow-[0_0_15px_rgba(230,57,70,0.8)]'
                 : 'bg-hindia-bg border-hindia-subtle shadow-md'
             }`}
           ></div>

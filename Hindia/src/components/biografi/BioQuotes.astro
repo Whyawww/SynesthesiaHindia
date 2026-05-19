@@ -26,7 +26,7 @@ const { quotes } = Astro.props;
             {q.text}
           </blockquote>
           
-          <figcaption class="label-sm relative z-10 before:content-['—_'] before:text-hindia-primary">
+          <figcaption class="label-sm relative z-10 before:content-['—_'] before:text-hindia-secondary">
             {q.context}
           </figcaption>
         </figure>
@@ -42,7 +42,6 @@ const { quotes } = Astro.props;
     gsap.registerPlugin(ScrollTrigger);
   
     gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
-      // Best Practice: Gunakan fromTo daripada from untuk mencegah stuck opacity
       gsap.fromTo(".quote-card", 
         { 
           y: 40, 
