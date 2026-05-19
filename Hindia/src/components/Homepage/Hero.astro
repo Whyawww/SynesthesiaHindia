@@ -31,13 +31,12 @@ import imgNyanyi from '../../assets/nyanyi.jpg';
     </div>
 
     <div class="animate-fade-up animation-delay-300">
-      <button class="font-sans font-semibold text-hindia-bg bg-hindia-secondary hover:bg-hindia-text px-10 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-hindia-secondary/30 transform hover:-translate-y-1 active:scale-95">
+      <button id="hero-play-btn" class="font-sans font-semibold text-hindia-bg bg-hindia-secondary hover:bg-hindia-text px-10 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-hindia-secondary/30 transform hover:-translate-y-1 active:scale-95 cursor-pointer">
         Mulai Dengarkan
       </button>
     </div>
 
   </div>
-
 </section>
 
 <script>
@@ -48,10 +47,8 @@ import imgNyanyi from '../../assets/nyanyi.jpg';
 
   if (images.length > 0) {
     let currentIndex = 0;
-
     const changeImage = () => {
       const nextIndex = (currentIndex + 1) % images.length;
-      
       const currentImg = images[currentIndex];
       const nextImg = images[nextIndex];
 
@@ -59,36 +56,41 @@ import imgNyanyi from '../../assets/nyanyi.jpg';
         gsap.to(currentImg, { opacity: 0, duration: 1.5, ease: "power2.inOut" });
         gsap.to(nextImg, { opacity: 1, duration: 1.5, ease: "power2.inOut" });
       }
-      
       currentIndex = nextIndex;
     };
-
     setInterval(changeImage, 5000);
   }
 
   if (content) {
     gsap.from(content.children, {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: "power3.out",
-      delay: 0.3
+      y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out", delay: 0.3
+    });
+  }
+
+  const playBtn = document.querySelector<HTMLButtonElement>("#hero-play-btn");
+  
+  if (playBtn) {
+    playBtn.addEventListener("click", () => {
+      const payload = {
+        title: "Hindia",
+        album: "Eksplorasi karya dan melodi dari Baskara Putra", 
+        spotify: "https://open.spotify.com/artist/51kyrUsAVqUBcoDEMFkX12",
+        ytMusic: "https://music.youtube.com/@hindia",
+        yt: "https://www.youtube.com/@hindia"
+      };
+
+      window.dispatchEvent(new CustomEvent("hindia:open-modal", { detail: payload }));
     });
   }
 </script>
 
 <style>
-  .bg-300\% {
-    background-size: 300% 100%;
-  }
-
+  .bg-300\% { background-size: 300% 100%; }
+  
   @keyframes gradient-pan {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
   }
-
-  .animate-gradient-pan {
-    animation: gradient-pan 8s linear infinite;
-  }
+  
+  .animate-gradient-pan { animation: gradient-pan 8s linear infinite; }
 </style>
