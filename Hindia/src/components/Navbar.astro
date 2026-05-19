@@ -19,7 +19,7 @@ const pathname = Astro.url.pathname;
       </div>
     </a>
 
-    <ul class="hidden md:flex items-center gap-8 text-xl font-sans font-bold ">
+    <ul class="hidden md:flex items-center gap-8 text-xl font-sans font-bold">
       <li>
         <a 
           href="/" 
@@ -47,13 +47,31 @@ const pathname = Astro.url.pathname;
     </ul>
 
     <div class="flex items-center gap-6 text-sm font-sans font-medium">
-      <a 
-        href="#listen" 
-        class="bg-hindia-secondary hover:bg-hindia-text text-hindia-bg px-6 py-2 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(244,162,97,0.3)] hover:shadow-[0_0_20px_rgba(226,232,240,0.5)] transform hover:-translate-y-0.5"
+      <button 
+        id="navbar-play-btn"
+        class="bg-hindia-secondary hover:bg-hindia-text text-hindia-bg px-6 py-2 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(244,162,97,0.3)] hover:shadow-[0_0_20px_rgba(226,232,240,0.5)] transform hover:-translate-y-0.5 cursor-pointer"
       >
         Mulai Dengar
-      </a>
+      </button>
     </div>
 
   </nav>
 </header>
+
+<script>
+  const navbarPlayBtn = document.querySelector<HTMLButtonElement>("#navbar-play-btn");
+  
+  if (navbarPlayBtn) {
+    navbarPlayBtn.addEventListener("click", () => {
+      const payload = {
+        title: "Hindia",
+        album: "Eksplorasi karya dan melodi dari Baskara Putra", 
+        spotify: "https://open.spotify.com/artist/51kyrUsAVqUBcoDEMFkX12",
+        ytMusic: "https://music.youtube.com/@hindia",
+        yt: "https://www.youtube.com/@hindia"
+      };
+
+      window.dispatchEvent(new CustomEvent("hindia:open-modal", { detail: payload }));
+    });
+  }
+</script>
